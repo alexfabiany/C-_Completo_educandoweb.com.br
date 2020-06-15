@@ -8,13 +8,8 @@ namespace Course {
 
     public Produto(string nome, double preco, int quantidade) {
       Nome = nome;
-<<<<<<< HEAD
       Preco = preco;
       Quantidade = quantidade;
-=======
-      this.Preco = preco;
-      this.Quantidade = quantidade;
->>>>>>> f7bbca3f02fc8f9509bb49fe3639c381e3d6c654
     }
 
     public void AdicionarProdutos(int quantidade) {
