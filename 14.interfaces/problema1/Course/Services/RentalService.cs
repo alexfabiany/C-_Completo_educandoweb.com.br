@@ -5,6 +5,7 @@ namespace Course.Services {
     class RentalService {
         public double PricePerHour { get; private set; }
         public double PricePerDay { get; private set; }
+        public TimeSpan Duration { get; private set; }
 
         private BrazilTaxService _brazilTaxService = new BrazilTaxService();
 
@@ -14,18 +15,25 @@ namespace Course.Services {
         }
 
         public void ProcessInvoice(CarRental carRental) {
-            TimeSpan duration = carRental.Finish.Subtract(carRental.Start);
+            Duration = carRental.Finish.Subtract(carRental.Start);
 
             double basicPayment = 0.0;
-            if (duration.TotalHours <= 12) {
-                basicPayment = PricePerHour * Math.Ceiling(duration.TotalHours);
+            if (Duration.TotalHours <= 12) {
+                basicPayment = PricePerHour * Math.Ceiling(Duration.TotalHours);
             } else {
-                basicPayment = PricePerDay * Math.Ceiling(duration.TotalDays);
+                basicPayment = PricePerDay * Math.Ceiling(Duration.TotalDays);
             }
 
             double tax = _brazilTaxService.Tax(basicPayment);
 
             carRental.Invoice = new Invoice(basicPayment, tax);
+        }
+        public string DurationToString() {
+            if (Duration.TotalHours <= 12) {
+                return Math.Ceiling(Duration.TotalHours) + " horas";
+            } else {
+                return Math.Ceiling(Duration.TotalDays) + " dias";
+            }
         }
     }
 }
