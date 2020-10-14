@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Model\Entities\IShape.cs" />
+    <Compile Remove="Model\Entities\Shape.cs" />
   </ItemGroup>
 
 </Project>

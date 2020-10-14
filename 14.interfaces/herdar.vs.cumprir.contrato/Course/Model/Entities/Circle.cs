@@ -4,7 +4,7 @@ using Course.Model.Entities;
 
 
 namespace Course.Model.Entities {
-    class Circle : Shape {
+    class Circle : AbstractShape {
         public double Radius { get; set; }
         public override double Area() {
             return Math.PI * Radius * Radius;
