@@ -1,5 +1,3 @@
-using tabuleiro;
-
 namespace tabuleiro {
     class Peca {
         public Posicao posicao { get; set; }
