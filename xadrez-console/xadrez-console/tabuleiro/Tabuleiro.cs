@@ -31,15 +31,15 @@ namespace tabuleiro {
             p.posicao = pos;
         }
 
-        public Peca retirarPeca(Posicao pos) {
+        public Peca retirarPeca(Posicao pos) { 
             if(peca(pos) == null) {
                 return null;
             }
 
-            Peca aux = peca(pos);
-            aux.posicao = null;
+            Peca pecaPos = peca(pos);
+            pecaPos.posicao = null;
             pecas[pos.linha, pos.coluna] = null;
-            return aux;
+            return pecaPos;
         }
 
         public bool posicaoValida(Posicao pos) {
