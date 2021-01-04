@@ -16,6 +16,10 @@ namespace tabuleiro {
             qtdeMovimentos++;
         }
 
+        public void decrementarQtdeMovimentos() {
+            qtdeMovimentos--;
+        }
+
         public bool existemMovimentosPossiveis() {
             bool[,] matrix = movimentosPossiveis();
             for (int i = 0; i < tab.linhas; i++) {
