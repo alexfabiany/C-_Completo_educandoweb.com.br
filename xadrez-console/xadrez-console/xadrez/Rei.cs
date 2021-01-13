@@ -18,7 +18,7 @@ namespace xadrez {
 
         private bool testeTorreParaRoque(Posicao pos) {
             Peca p = tab.peca(pos);
-            return p != null && p is Torre && p.cor == cor && p.qtdeMovimentos == 0;
+            return p != null && p is Torre && p.cor == this.cor && p.qtdeMovimentos == 0;
         }
 
         public override bool[,] movimentosPossiveis() {
@@ -72,6 +72,13 @@ namespace xadrez {
             pos.definirValores(posicao.linha - 1, posicao.coluna - 1);
             if (tab.posicaoValida(pos) && podeMover(pos)) {
                 matrix[pos.linha, pos.coluna] = true;
+            }
+
+            // #jogada especial roque
+            if (qtdeMovimentos == 0 && !partida.xeque) {
+                // #jogada especial roque pequeno
+                Posicao posTorreDireita = new Posicao(posicao.linha, posicao.coluna + 3);
+
             }
 
             return matrix;
